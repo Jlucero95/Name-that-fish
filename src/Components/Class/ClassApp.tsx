@@ -9,7 +9,7 @@ export type TGuessCount = {
 };
 
 export class ClassApp extends Component<TGuessCount> {
-	state = {
+	state: TGuessCount = {
 		incorrectCount: 0,
 		correctCount: 0,
 	};
@@ -17,7 +17,12 @@ export class ClassApp extends Component<TGuessCount> {
 		return (
 			<>
 				<>
-					<ClassScoreBoard />
+					<ClassScoreBoard
+						countNumbers={{
+							incorrectCount: this.state.incorrectCount,
+							correctCount: this.state.correctCount,
+						}}
+					/>
 					<ClassGameBoard
 						handleGuessCount={({ incorrectCount, correctCount }) => {
 							this.setState({
