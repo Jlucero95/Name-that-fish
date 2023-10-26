@@ -59,7 +59,6 @@ export class ClassGameBoard extends Component<{
 					}}
 				>
 					<label htmlFor="fish-guess">What kind of fish is this?</label>
-					{guessInput}
 					<input
 						type="text"
 						name="fish-guess"
