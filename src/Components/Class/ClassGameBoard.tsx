@@ -2,7 +2,6 @@ import "./styles/game-board.css";
 import { Component } from "react";
 import { Images } from "../../assets/Images";
 import { TGuessCheck } from "../GuessType";
-import { TGuessCount } from "./ClassApp";
 
 const initialFishes = [
 	{
@@ -24,15 +23,19 @@ const initialFishes = [
 ];
 
 export class ClassGameBoard extends Component<{
-	handleGuessCount: ({ incorrectCount, correctCount }: TGuessCount) => void;
+	handleGuessCount: ({
+		guess,
+		fishName,
+	}: {
+		guess: string;
+		fishName: string;
+	}) => void;
 }> {
 	state: TGuessCheck = {
 		guessInput: "",
-		incorrect: 0,
-		correct: 0,
 	};
 	render() {
-		const { guessInput, incorrect, correct } = this.state;
+		const { guessInput } = this.state;
 		const { handleGuessCount } = this.props;
 
 		const nextFishToName = initialFishes[0];
@@ -48,12 +51,9 @@ export class ClassGameBoard extends Component<{
 					id="fish-guess-form"
 					onSubmit={(e) => {
 						e.preventDefault();
-						guessInput === nextFishToName.name
-							? this.setState({ correct: correct + 1 })
-							: this.setState({ incorrect: incorrect + 1 });
 						handleGuessCount({
-							incorrectCount: incorrect,
-							correctCount: correct,
+							guess: guessInput,
+							fishName: nextFishToName.name,
 						});
 						this.setState({ guessInput: "" });
 					}}

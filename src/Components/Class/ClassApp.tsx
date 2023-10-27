@@ -14,21 +14,23 @@ export class ClassApp extends Component<TGuessCount> {
 		correctCount: 0,
 	};
 	render() {
+		const { incorrectCount, correctCount } = this.state;
 		return (
 			<>
 				<>
 					<ClassScoreBoard
 						countNumbers={{
-							incorrectCount: this.state.incorrectCount,
-							correctCount: this.state.correctCount,
+							incorrectCount: incorrectCount,
+							correctCount: correctCount,
 						}}
 					/>
 					<ClassGameBoard
-						handleGuessCount={({ incorrectCount, correctCount }) => {
-							this.setState({
-								incorrectCount: incorrectCount,
-								correctCount: correctCount,
-							});
+						handleGuessCount={({ guess, fishName }) => {
+							if (guess === fishName) {
+								this.setState({ correctCount: correctCount + 1 });
+							} else {
+								this.setState({ incorrectCount: incorrectCount + 1 });
+							}
 						}}
 					/>
 				</>
