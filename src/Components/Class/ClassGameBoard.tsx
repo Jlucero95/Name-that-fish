@@ -33,12 +33,13 @@ export class ClassGameBoard extends Component<{
 }> {
 	state: TGuessCheck = {
 		guessInput: "",
+		fishIndex: 0,
 	};
 	render() {
-		const { guessInput } = this.state;
+		const { guessInput, fishIndex } = this.state;
 		const { handleGuessCount } = this.props;
 
-		const nextFishToName = initialFishes[0];
+		const nextFishToName = initialFishes[fishIndex];
 		return (
 			<div id="game-board">
 				<div id="fish-container">
@@ -51,11 +52,13 @@ export class ClassGameBoard extends Component<{
 					id="fish-guess-form"
 					onSubmit={(e) => {
 						e.preventDefault();
+
 						handleGuessCount({
 							guess: guessInput,
 							fishName: nextFishToName.name,
 						});
-						this.setState({ guessInput: "" });
+
+						this.setState({ guessInput: "", fishIndex: fishIndex + 1 });
 					}}
 				>
 					<label htmlFor="fish-guess">What kind of fish is this?</label>
