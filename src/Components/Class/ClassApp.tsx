@@ -1,6 +1,6 @@
 import { Component } from "react";
 import { ClassScoreBoard } from "./ClassScoreBoard";
-import { ClassGameBoard } from "./ClassGameBoard";
+import { ClassGameBoard, initialFishes } from "./ClassGameBoard";
 import { ClassFinalScore } from "./ClassFinalScore";
 
 export type TGuessCount = {
@@ -24,17 +24,24 @@ export class ClassApp extends Component<TGuessCount> {
 							correctCount: correctCount,
 						}}
 					/>
-					<ClassGameBoard
-						handleGuessCount={({ guess, fishName }) => {
-							if (guess === fishName) {
-								this.setState({ correctCount: correctCount + 1 });
-							} else {
-								this.setState({ incorrectCount: incorrectCount + 1 });
-							}
+					{correctCount + incorrectCount < initialFishes.length && (
+						<ClassGameBoard
+							handleGuessCount={({ guess, fishName }) => {
+								guess === fishName
+									? this.setState({ correctCount: correctCount + 1 })
+									: this.setState({ incorrectCount: incorrectCount + 1 });
+							}}
+						/>
+					)}
+				</>
+				{correctCount + incorrectCount >= initialFishes.length && (
+					<ClassFinalScore
+						totals={{
+							correctCount: correctCount,
+							totalCount: correctCount + incorrectCount,
 						}}
 					/>
-				</>
-				{false && <ClassFinalScore />}
+				)}
 			</>
 		);
 	}

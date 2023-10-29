@@ -3,7 +3,7 @@ import { Component } from "react";
 import { Images } from "../../assets/Images";
 import { TGuessCheck } from "../GuessType";
 
-const initialFishes = [
+export const initialFishes = [
 	{
 		name: "trout",
 		url: Images.trout,
@@ -40,6 +40,7 @@ export class ClassGameBoard extends Component<{
 		const { handleGuessCount } = this.props;
 
 		const nextFishToName = initialFishes[fishIndex];
+
 		return (
 			<div id="game-board">
 				<div id="fish-container">
@@ -52,13 +53,17 @@ export class ClassGameBoard extends Component<{
 					id="fish-guess-form"
 					onSubmit={(e) => {
 						e.preventDefault();
-
 						handleGuessCount({
 							guess: guessInput,
 							fishName: nextFishToName.name,
 						});
-
-						this.setState({ guessInput: "", fishIndex: fishIndex + 1 });
+						this.setState({
+							guessInput: "",
+							fishIndex:
+								fishIndex <= initialFishes.length
+									? fishIndex + 1
+									: initialFishes.length,
+						});
 					}}
 				>
 					<label htmlFor="fish-guess">What kind of fish is this?</label>
