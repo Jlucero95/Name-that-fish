@@ -35,6 +35,7 @@ export class ClassGameBoard extends Component<{
 		guessInput: "",
 		fishIndex: 0,
 	};
+
 	render() {
 		const { guessInput, fishIndex } = this.state;
 		const { handleGuessCount } = this.props;

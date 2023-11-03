@@ -13,8 +13,10 @@ export class ClassApp extends Component<TGuessCount> {
 		incorrectCount: 0,
 		correctCount: 0,
 	};
+
 	render() {
 		const { incorrectCount, correctCount } = this.state;
+
 		return (
 			<>
 				<>
