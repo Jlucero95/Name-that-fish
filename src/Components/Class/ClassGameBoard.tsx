@@ -1,26 +1,7 @@
 import "./styles/game-board.css";
 import { Component } from "react";
-import { Images } from "../../assets/Images";
-import { TGuessCheck } from "../GuessType";
-
-export const initialFishes = [
-	{
-		name: "trout",
-		url: Images.trout,
-	},
-	{
-		name: "salmon",
-		url: Images.salmon,
-	},
-	{
-		name: "tuna",
-		url: Images.tuna,
-	},
-	{
-		name: "shark",
-		url: Images.shark,
-	},
-];
+import type { TGuessCheck } from "../AppTypes.ts/TGuessCheck";
+import { initialFishes } from "../FishData";
 
 export class ClassGameBoard extends Component<{
 	handleGuessCount: ({

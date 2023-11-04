@@ -1,22 +1,20 @@
 import { Component } from "react";
-
-export type TCountTotals = {
-	correctCount: number;
-	totalCount: number;
-};
+import type { TCountTotals } from "../AppTypes.ts/TCountTotals";
 
 export class ClassFinalScore extends Component<{
 	totals: TCountTotals;
 }> {
 	render() {
 		const { totals } = this.props;
+		const totalCount = totals.totalCount;
+		const correctCount = totals.correctCount;
 		return (
 			<div id="final-score">
 				<h1>Your Final Score Was</h1>
 				<div id="score">
-					<p>{totals.correctCount}</p>
+					<p>{correctCount}</p>
 					<hr />
-					<p>{totals.totalCount}</p>
+					<p>{totalCount}</p>
 				</div>
 			</div>
 		);

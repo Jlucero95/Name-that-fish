@@ -1,8 +1,7 @@
 import { Component } from "react";
 import "./styles/score-board.css";
-import { TGuessCount } from "./ClassApp";
-
-const initialAnswersLeft = ["trout", "salmon", "tuna", "shark"];
+import type { TGuessCount } from "../AppTypes.ts/TGuessCount";
+import { initialAnswersLeft } from "../AnswersLeftData";
 
 export class ClassScoreBoard extends Component<{
 	countNumbers: TGuessCount;
