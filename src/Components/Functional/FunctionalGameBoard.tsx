@@ -1,14 +1,10 @@
 import "./styles/game-board.css";
 import { initialFishes } from "../FishData";
 import { useState } from "react";
-
-export type TFuncGuessCompare = (onGuess: {
-	guess: string;
-	fishName: string;
-}) => void;
+import { TGuessCompare } from "../AppTypes.ts/TGuessCompare";
 
 export function FunctionalGameBoard(onGuess: {
-	handleGuessCompare: TFuncGuessCompare;
+	handleGuessCompare: TGuessCompare;
 }) {
 	const [guessInput, setGuessInput] = useState("");
 	const [fishIndex, setFishIndex] = useState(0);

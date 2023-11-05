@@ -38,7 +38,7 @@ export class ClassApp extends Component<TGuessCount> {
 					<ClassFinalScore
 						totals={{
 							correctCount: correctCount,
-							totalCount: correctCount + incorrectCount,
+							totalCount: totalCount,
 						}}
 					/>
 				)}

@@ -7,12 +7,12 @@ export class ClassScoreBoard extends Component<{
 	countNumbers: TGuessCount;
 }> {
 	render() {
-		const { countNumbers } = this.props;
-		const totalCount = countNumbers.correctCount + countNumbers.incorrectCount;
+		const { incorrectCount, correctCount } = this.props.countNumbers;
+		const totalCount = correctCount + incorrectCount;
 		const answersLeft = initialAnswersLeft.slice(totalCount);
 		return (
 			<div id="score-board">
-				<div>Incorrect 🔻: {countNumbers.incorrectCount}</div>
+				<div>Incorrect 🔻: {incorrectCount}</div>
 				<div id="choices-left">
 					{answersLeft.map((answer) => (
 						<div
@@ -23,7 +23,7 @@ export class ClassScoreBoard extends Component<{
 						</div>
 					))}
 				</div>
-				<div>Correct ✅: {countNumbers.correctCount}</div>
+				<div>Correct ✅: {correctCount}</div>
 			</div>
 		);
 	}

@@ -2,11 +2,10 @@ import "./styles/score-board.css";
 import { initialAnswersLeft } from "../AnswersLeftData.ts";
 import { TGuessCount } from "../AppTypes.ts/TGuessCount.ts";
 
-const answersLeft = initialAnswersLeft.slice(1);
-
 export function FunctionalScoreBoard(count: TGuessCount) {
-	const incorrectCount = count.incorrectCount;
-	const correctCount = count.correctCount;
+	const { incorrectCount, correctCount } = count;
+	const totalCount = incorrectCount + correctCount;
+	const answersLeft = initialAnswersLeft.slice(totalCount);
 	return (
 		<div id="score-board">
 			<div>Incorrect 🔻: {incorrectCount}</div>

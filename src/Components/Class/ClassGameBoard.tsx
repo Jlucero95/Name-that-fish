@@ -1,10 +1,10 @@
 import "./styles/game-board.css";
 import { Component } from "react";
 import { initialFishes } from "../FishData";
-import { TClassGuessCompare } from "../AppTypes.ts/TClassGuessCompare";
+import { TGuessCompare } from "../AppTypes.ts/TGuessCompare";
 
 export class ClassGameBoard extends Component<{
-	handleGuessCompare: TClassGuessCompare;
+	handleGuessCompare: TGuessCompare;
 }> {
 	state = {
 		guessInput: "",

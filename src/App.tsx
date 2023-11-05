@@ -1,6 +1,6 @@
 import "./App.css";
 import { ClassApp } from "./Components/Class/ClassApp";
-import { FunctionalApp } from "./Components/Functional/FunctionalApp.1";
+import { FunctionalApp } from "./Components/Functional/FunctionalApp";
 
 function App() {
 	return (

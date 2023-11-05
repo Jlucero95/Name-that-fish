@@ -5,9 +5,7 @@ export class ClassFinalScore extends Component<{
 	totals: TCountTotals;
 }> {
 	render() {
-		const { totals } = this.props;
-		const totalCount = totals.totalCount;
-		const correctCount = totals.correctCount;
+		const { totalCount, correctCount } = this.props.totals;
 		return (
 			<div id="final-score">
 				<h1>Your Final Score Was</h1>
