@@ -1,8 +1,8 @@
+import { useState } from "react";
 import { FunctionalGameBoard } from "./FunctionalGameBoard";
 import { FunctionalScoreBoard } from "./FunctionalScoreBoard";
 import { FunctionalFinalScore } from "./FunctionalFinalScore";
-import { useState } from "react";
-import { initialFishes } from "../FishData";
+import { initialFishes } from "../Data/FishData";
 
 export function FunctionalApp() {
 	const [correctCount, setCorrectCount] = useState(0);

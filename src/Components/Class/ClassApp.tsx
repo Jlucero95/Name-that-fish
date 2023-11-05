@@ -2,10 +2,10 @@ import { Component } from "react";
 import { ClassScoreBoard } from "./ClassScoreBoard";
 import { ClassGameBoard } from "./ClassGameBoard";
 import { ClassFinalScore } from "./ClassFinalScore";
-import { initialFishes } from "../FishData";
+import { initialFishes } from "../Data/FishData";
 import type { TGuessCount } from "../AppTypes.ts/TGuessCount";
 
-export class ClassApp extends Component<TGuessCount> {
+export class ClassApp extends Component {
 	state: TGuessCount = {
 		incorrectCount: 0,
 		correctCount: 0,
