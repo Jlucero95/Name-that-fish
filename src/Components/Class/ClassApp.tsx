@@ -26,7 +26,7 @@ export class ClassApp extends Component<TGuessCount> {
 					/>
 					{totalCount < initialFishes.length && (
 						<ClassGameBoard
-							handleGuessCount={({ guess, fishName }) => {
+							handleGuessCompare={({ guess, fishName }) => {
 								guess === fishName
 									? this.setState({ correctCount: correctCount + 1 })
 									: this.setState({ incorrectCount: incorrectCount + 1 });

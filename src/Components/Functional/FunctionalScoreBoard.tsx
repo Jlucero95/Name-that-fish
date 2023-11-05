@@ -1,22 +1,26 @@
 import "./styles/score-board.css";
-//  Where the score is presented
+import { initialAnswersLeft } from "../AnswersLeftData.ts";
+import { TGuessCount } from "../AppTypes.ts/TGuessCount.ts";
 
-const incorrectCount = 0;
-const correctCount = 0;
-const answersLeft = ["trout", "salmon", "tuna", "shark"];
+const answersLeft = initialAnswersLeft.slice(1);
 
-export function FunctionalScoreBoard() {
-  return (
-    <div id="score-board">
-      <div>Incorrect 🔻: {incorrectCount}</div>
-      <div id="choices-left">
-        {answersLeft.map((answer) => (
-          <div key={answer} className="choice">
-            {answer}
-          </div>
-        ))}
-      </div>
-      <div>Correct ✅: {correctCount}</div>
-    </div>
-  );
+export function FunctionalScoreBoard(count: TGuessCount) {
+	const incorrectCount = count.incorrectCount;
+	const correctCount = count.correctCount;
+	return (
+		<div id="score-board">
+			<div>Incorrect 🔻: {incorrectCount}</div>
+			<div id="choices-left">
+				{answersLeft.map((answer) => (
+					<div
+						key={answer}
+						className="choice"
+					>
+						{answer}
+					</div>
+				))}
+			</div>
+			<div>Correct ✅: {correctCount}</div>
+		</div>
+	);
 }

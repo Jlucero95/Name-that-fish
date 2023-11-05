@@ -1,25 +1,19 @@
 import "./styles/game-board.css";
 import { Component } from "react";
-import type { TGuessCheck } from "../AppTypes.ts/TGuessCheck";
 import { initialFishes } from "../FishData";
+import { TClassGuessCompare } from "../AppTypes.ts/TClassGuessCompare";
 
 export class ClassGameBoard extends Component<{
-	handleGuessCount: ({
-		guess,
-		fishName,
-	}: {
-		guess: string;
-		fishName: string;
-	}) => void;
+	handleGuessCompare: TClassGuessCompare;
 }> {
-	state: TGuessCheck = {
+	state = {
 		guessInput: "",
 		fishIndex: 0,
 	};
 
 	render() {
 		const { guessInput, fishIndex } = this.state;
-		const { handleGuessCount } = this.props;
+		const { handleGuessCompare } = this.props;
 
 		const nextFishToName = initialFishes[fishIndex];
 
@@ -35,7 +29,7 @@ export class ClassGameBoard extends Component<{
 					id="fish-guess-form"
 					onSubmit={(e) => {
 						e.preventDefault();
-						handleGuessCount({
+						handleGuessCompare({
 							guess: guessInput,
 							fishName: nextFishToName.name,
 						});

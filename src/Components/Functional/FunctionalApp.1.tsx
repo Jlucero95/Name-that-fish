@@ -6,7 +6,6 @@ import { useState } from "react";
 export function FunctionalApp() {
 	const [correctCount, setCorrectCount] = useState(0);
 	const [incorrectCount, setIncorrectCount] = useState(0);
-
 	return (
 		<>
 			<FunctionalScoreBoard
@@ -15,9 +14,11 @@ export function FunctionalApp() {
 			/>
 			<FunctionalGameBoard
 				handleGuessCompare={({ guess, fishName }) => {
-					guess === fishName
-						? setCorrectCount(correctCount + 1)
-						: setIncorrectCount(incorrectCount + 1);
+					if (guess === fishName) {
+						setCorrectCount(correctCount + 1);
+					} else {
+						setIncorrectCount(incorrectCount + 1);
+					}
 				}}
 			/>
 			{false && <FunctionalFinalScore />}
