@@ -1,9 +1,13 @@
 import "./styles/score-board.css";
-import type { TGuessCount } from "../AppTypes.ts/TGuessCount.ts";
 import { initialAnswersLeft } from "../Data/AnswersLeftData.ts";
 
-export function FunctionalScoreBoard(counts: TGuessCount) {
-	const { incorrectCount, correctCount } = counts;
+type FunctionalScoreBoardProps = {
+	incorrectCount: number;
+	correctCount: number;
+};
+
+export function FunctionalScoreBoard(props: FunctionalScoreBoardProps) {
+	const { incorrectCount, correctCount } = props;
 	const totalCount = incorrectCount + correctCount;
 	const answersLeft = initialAnswersLeft.slice(totalCount);
 	return (

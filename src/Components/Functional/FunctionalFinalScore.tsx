@@ -1,9 +1,14 @@
-import { TCountTotals } from "../AppTypes.ts/TCountTotals";
 import "./styles/final-score.css";
 
-export function FunctionalFinalScore(props: { totals: TCountTotals }) {
-	const { totalCount, correctCount } = props.totals;
+type FunctionalFinalScoreProps = {
+	correctCount: number;
+	totalCount: number;
+};
 
+export function FunctionalFinalScore({
+	totalCount,
+	correctCount,
+}: FunctionalFinalScoreProps) {
 	return (
 		<div id="final-score">
 			<h1>Your Final Score Was</h1>

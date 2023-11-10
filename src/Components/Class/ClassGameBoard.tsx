@@ -1,45 +1,38 @@
 import "./styles/game-board.css";
 import { Component } from "react";
-import { initialFishes } from "../Data/FishData";
-import { TGuessCompare } from "../AppTypes.ts/TGuessCompare";
+import { Fish } from "../../types";
 
-export class ClassGameBoard extends Component<{
-	handleGuessCompare: TGuessCompare;
-}> {
-	state = {
+type ClassGameBoardProps = {
+	onGuess: (guess: string) => void;
+	nextFish: Fish;
+};
+
+type inputStateProps = { guessInput: string };
+
+export class ClassGameBoard extends Component<ClassGameBoardProps> {
+	state: inputStateProps = {
 		guessInput: "",
-		fishIndex: 0,
 	};
 
 	render() {
-		const { guessInput, fishIndex } = this.state;
-		const { handleGuessCompare } = this.props;
-
-		const nextFishToName = initialFishes[fishIndex];
-		const fishName = nextFishToName.name;
+		const { guessInput } = this.state;
+		const { onGuess, nextFish } = this.props;
 
 		return (
 			<div id="game-board">
 				<div id="fish-container">
 					<img
-						src={nextFishToName.url}
-						alt={nextFishToName.name}
+						src={nextFish.url}
+						alt={nextFish.name}
 					/>
 				</div>
 				<form
 					id="fish-guess-form"
 					onSubmit={(e) => {
 						e.preventDefault();
-						handleGuessCompare({
-							guess: guessInput,
-							fishName: fishName,
-						});
+						onGuess(guessInput);
 						this.setState({
 							guessInput: "",
-							fishIndex:
-								fishIndex <= initialFishes.length
-									? fishIndex + 1
-									: initialFishes.length,
 						});
 					}}
 				>

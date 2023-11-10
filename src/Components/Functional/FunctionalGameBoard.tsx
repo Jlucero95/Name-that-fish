@@ -1,21 +1,23 @@
 import { useState } from "react";
 import "./styles/game-board.css";
-import { initialFishes } from "../Data/FishData";
-import type { TGuessCompare } from "../AppTypes.ts/TGuessCompare";
+import { Fish } from "../../types";
 
-export function FunctionalGameBoard(onGuess: {
-	handleGuessCompare: TGuessCompare;
-}) {
+type FunctionalGameBoardProps = {
+	onGuess: (guess: string) => void;
+	nextFish: Fish;
+};
+
+export function FunctionalGameBoard({
+	onGuess,
+	nextFish,
+}: FunctionalGameBoardProps) {
 	const [guessInput, setGuessInput] = useState("");
-	const [fishIndex, setFishIndex] = useState(0);
-	const nextFishToName = initialFishes[fishIndex];
-	const fishName = nextFishToName.name;
 	return (
 		<div id="game-board">
 			<div id="fish-container">
 				<img
-					src={nextFishToName.url}
-					alt={nextFishToName.name}
+					src={nextFish.url}
+					alt={nextFish.name}
 				/>
 			</div>
 
@@ -23,12 +25,8 @@ export function FunctionalGameBoard(onGuess: {
 				id="fish-guess-form"
 				onSubmit={(e) => {
 					e.preventDefault();
-					onGuess.handleGuessCompare({
-						guess: guessInput,
-						fishName: fishName,
-					});
+					onGuess(guessInput);
 					setGuessInput("");
-					setFishIndex(fishIndex + 1);
 				}}
 			>
 				<label htmlFor="fish-guess">What kind of fish is this?</label>
