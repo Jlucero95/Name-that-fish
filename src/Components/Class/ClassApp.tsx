@@ -18,24 +18,31 @@ export class ClassApp extends Component<Record<string, never>, ClassState> {
 		const { incorrectCount, correctCount } = this.state;
 		const totalCount = incorrectCount + correctCount;
 		const isGameOver = totalCount === initialFishes.length;
+		const answersLeft = initialFishes
+			.map((fish) => fish.name)
+			.slice(totalCount);
 		const nextFish = initialFishes[totalCount];
+		const handleGuess = (guess: string) => {
+			guess === nextFish.name
+				? this.setState({ correctCount: correctCount + 1 })
+				: this.setState({ incorrectCount: incorrectCount + 1 });
+		};
 
 		return (
 			<>
 				<>
-					<ClassScoreBoard
-						incorrectCount={incorrectCount}
-						correctCount={correctCount}
-					/>
 					{!isGameOver && (
-						<ClassGameBoard
-							nextFish={nextFish}
-							onGuess={(guess) => {
-								guess === nextFish.name
-									? this.setState({ correctCount: correctCount + 1 })
-									: this.setState({ incorrectCount: incorrectCount + 1 });
-							}}
-						/>
+						<>
+							<ClassScoreBoard
+								incorrectCount={incorrectCount}
+								correctCount={correctCount}
+								answersLeft={answersLeft}
+							/>
+							<ClassGameBoard
+								nextFish={nextFish}
+								onGuess={handleGuess}
+							/>
+						</>
 					)}
 				</>
 				{isGameOver && (

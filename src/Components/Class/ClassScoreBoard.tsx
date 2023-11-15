@@ -1,17 +1,15 @@
 import "./styles/score-board.css";
 import { Component } from "react";
-import { initialAnswersLeft } from "../Data/AnswersLeftData";
 
 type ClassScoreBoardProps = {
 	incorrectCount: number;
 	correctCount: number;
+	answersLeft: string[];
 };
 
 export class ClassScoreBoard extends Component<ClassScoreBoardProps> {
 	render() {
-		const { incorrectCount, correctCount } = this.props;
-		const totalCount = correctCount + incorrectCount;
-		const answersLeft = initialAnswersLeft.slice(totalCount);
+		const { incorrectCount, correctCount, answersLeft } = this.props;
 		return (
 			<div id="score-board">
 				<div>Incorrect 🔻: {incorrectCount}</div>

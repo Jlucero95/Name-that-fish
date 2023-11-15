@@ -1,4 +1,5 @@
 import { Component } from "react";
+import "./styles/final-score.css";
 
 type ClassFinalScoreProps = {
 	correctCount: number;

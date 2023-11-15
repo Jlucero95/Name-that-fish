@@ -1,15 +1,14 @@
 import "./styles/score-board.css";
-import { initialAnswersLeft } from "../Data/AnswersLeftData.ts";
 
 type FunctionalScoreBoardProps = {
 	incorrectCount: number;
 	correctCount: number;
+	answersLeft: string[];
 };
 
 export function FunctionalScoreBoard(props: FunctionalScoreBoardProps) {
-	const { incorrectCount, correctCount } = props;
-	const totalCount = incorrectCount + correctCount;
-	const answersLeft = initialAnswersLeft.slice(totalCount);
+	const { incorrectCount, correctCount, answersLeft } = props;
+
 	return (
 		<div id="score-board">
 			<div>Incorrect 🔻: {incorrectCount}</div>

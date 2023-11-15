@@ -1,1 +1,0 @@
-export const initialAnswersLeft = ["trout", "salmon", "tuna", "shark"];

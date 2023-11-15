@@ -1,5 +1,5 @@
 import "./styles/game-board.css";
-import { Component } from "react";
+import { Component, FormEvent } from "react";
 import { Fish } from "../../types";
 
 type ClassGameBoardProps = {
@@ -18,6 +18,14 @@ export class ClassGameBoard extends Component<ClassGameBoardProps> {
 		const { guessInput } = this.state;
 		const { onGuess, nextFish } = this.props;
 
+		const handleSubmit = (e: FormEvent) => {
+			e.preventDefault();
+			onGuess(guessInput);
+			this.setState({
+				guessInput: "",
+			});
+		};
+
 		return (
 			<div id="game-board">
 				<div id="fish-container">
@@ -28,13 +36,7 @@ export class ClassGameBoard extends Component<ClassGameBoardProps> {
 				</div>
 				<form
 					id="fish-guess-form"
-					onSubmit={(e) => {
-						e.preventDefault();
-						onGuess(guessInput);
-						this.setState({
-							guessInput: "",
-						});
-					}}
+					onSubmit={handleSubmit}
 				>
 					<label htmlFor="fish-guess">What kind of fish is this?</label>
 					<input
